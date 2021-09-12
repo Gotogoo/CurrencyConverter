@@ -15,11 +15,11 @@ class ExchangeRateTableSpec: QuickSpec {
     describe("write") {
       var exchangeRateTable: ExchangeRateTable!
       let currencyPair1 = CurrencyPair(
-        source: CryptoCurrency.btc(""),
+        source: CryptoCurrency.btc,
         target: LegalCurrency.usd
       )
       let currencyPair2 = CurrencyPair(
-        source: CryptoCurrency.eth(""),
+        source: CryptoCurrency.eth,
         target: LegalCurrency.usd
       )
       context("given the new table has an existed exchange rate") {
@@ -88,11 +88,11 @@ class ExchangeRateTableSpec: QuickSpec {
     describe("set") {
       var exchangeRateTable: ExchangeRateTable!
       let currencyPair1 = CurrencyPair(
-        source: CryptoCurrency.btc(""),
+        source: CryptoCurrency.btc,
         target: LegalCurrency.usd
       )
       let currencyPair2 = CurrencyPair(
-        source: CryptoCurrency.eth(""),
+        source: CryptoCurrency.eth,
         target: LegalCurrency.usd
       )
 

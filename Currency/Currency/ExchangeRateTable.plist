@@ -6,5 +6,9 @@
 	<real>40000</real>
 	<key>ETH/USD</key>
 	<real>3000</real>
+	<key>BTC/RMB</key>
+	<integer>250000</integer>
+	<key>ETH/RMB</key>
+	<integer>20000</integer>
 </dict>
 </plist>

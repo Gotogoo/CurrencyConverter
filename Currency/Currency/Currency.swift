@@ -9,11 +9,12 @@ import Foundation
 
 protocol Currency {
   var code: String { get }
+  static func from(code: String) -> Currency?
 }
 
-enum CryptoCurrency: Currency {
-  case btc(_ parameter: String)
-  case eth(_ parameter: String)
+enum CryptoCurrency: Currency, CaseIterable {
+  case btc
+  case eth
 
   var code: String {
     switch self {
@@ -23,9 +24,20 @@ enum CryptoCurrency: Currency {
       return "ETH"
     }
   }
+
+  static func from(code: String) -> Currency? {
+    switch code {
+    case "BTC":
+      return CryptoCurrency.btc
+    case "ETH":
+      return CryptoCurrency.eth
+    default:
+      return nil
+    }
+  }
 }
 
-enum LegalCurrency: Currency {
+enum LegalCurrency: Currency, CaseIterable {
   case rmb
   case usd
 
@@ -35,6 +47,17 @@ enum LegalCurrency: Currency {
       return "RMB"
     case .usd:
       return "USD"
+    }
+  }
+
+  static func from(code: String) -> Currency? {
+    switch code {
+    case "RMB":
+      return LegalCurrency.rmb
+    case "USD":
+      return LegalCurrency.usd
+    default:
+      return nil
     }
   }
 }

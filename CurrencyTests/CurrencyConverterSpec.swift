@@ -26,7 +26,7 @@ class CurrencyConverterSpec: QuickSpec {
         it("should return the correct result") {
           let result = currencyConverter.convert(
             100,
-            from: CryptoCurrency.btc(""),
+            from: CryptoCurrency.btc,
             to: LegalCurrency.usd
           )
           expect(result) == 10010.0

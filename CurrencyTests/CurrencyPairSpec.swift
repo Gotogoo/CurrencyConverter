@@ -19,7 +19,7 @@ class CurrencyPairSpec: QuickSpec {
         beforeEach {
           pair = CurrencyPair(
             source: LegalCurrency.rmb,
-            target: CryptoCurrency.btc("")
+            target: CryptoCurrency.btc
           )
         }
 
@@ -31,7 +31,7 @@ class CurrencyPairSpec: QuickSpec {
       context("given source is ETH and target is USD") {
         beforeEach {
           pair = CurrencyPair(
-            source: CryptoCurrency.eth(""),
+            source: CryptoCurrency.eth,
             target: LegalCurrency.usd
           )
         }
