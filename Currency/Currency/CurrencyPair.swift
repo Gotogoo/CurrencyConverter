@@ -12,6 +12,8 @@ struct CurrencyPair {
   let target: Currency
 
   var code: String {
-    return "\(source.code):\(target.code)"
+    [source, target]
+      .map { $0.code }
+      .joined(separator: "/")
   }
 }

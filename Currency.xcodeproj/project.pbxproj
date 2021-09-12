@@ -17,6 +17,8 @@
 		F6A5876B26ED05CC00BC767B /* CurrencyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5876A26ED05CC00BC767B /* CurrencyPair.swift */; };
 		F6A5876E26ED05F900BC767B /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5876D26ED05F900BC767B /* CurrencyConverter.swift */; };
 		F6A5877126ED062900BC767B /* ExchangeRateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5877026ED062900BC767B /* ExchangeRateTable.swift */; };
+		F6A5877426ED08C200BC767B /* ExchangeRateTable.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6A5877326ED08C200BC767B /* ExchangeRateTable.plist */; };
+		F6A5877C26ED90C800BC767B /* PorpertyListCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A5877B26ED90C800BC767B /* PorpertyListCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F6A5876A26ED05CC00BC767B /* CurrencyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPair.swift; sourceTree = "<group>"; };
 		F6A5876D26ED05F900BC767B /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 		F6A5877026ED062900BC767B /* ExchangeRateTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateTable.swift; sourceTree = "<group>"; };
+		F6A5877326ED08C200BC767B /* ExchangeRateTable.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExchangeRateTable.plist; sourceTree = "<group>"; };
+		F6A5877B26ED90C800BC767B /* PorpertyListCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorpertyListCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				F6A5876A26ED05CC00BC767B /* CurrencyPair.swift */,
 				F6A5876D26ED05F900BC767B /* CurrencyConverter.swift */,
 				F6A5877026ED062900BC767B /* ExchangeRateTable.swift */,
+				F6A5877B26ED90C800BC767B /* PorpertyListCodable.swift */,
+				F6A5877326ED08C200BC767B /* ExchangeRateTable.plist */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A5877426ED08C200BC767B /* ExchangeRateTable.plist in Resources */,
 				F6A5875D26ECA72B00BC767B /* LaunchScreen.storyboard in Resources */,
 				F6A5875A26ECA72B00BC767B /* Assets.xcassets in Resources */,
 				F6A5875826ECA71500BC767B /* Main.storyboard in Resources */,
@@ -164,6 +171,7 @@
 				F6A5876E26ED05F900BC767B /* CurrencyConverter.swift in Sources */,
 				F6A5875126ECA71500BC767B /* AppDelegate.swift in Sources */,
 				F6A5875326ECA71500BC767B /* SceneDelegate.swift in Sources */,
+				F6A5877C26ED90C800BC767B /* PorpertyListCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
