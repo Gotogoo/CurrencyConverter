@@ -10,11 +10,11 @@ import Foundation
 protocol PorpertyListCodable {
   associatedtype Model: Codable
 
-  var fileName: String { get }
+  static var fileName: String { get }
 }
 
 extension PorpertyListCodable {
-  func loadPropertyList() -> Model? {
+  static func loadPropertyList() -> Model? {
     do {
       let data = try Data(contentsOf: fileURL)
       return try PropertyListDecoder().decode(Model.self, from: data)
@@ -24,7 +24,7 @@ extension PorpertyListCodable {
     }
   }
 
-  func savePropertyList(model: Model) {
+  static func savePropertyList(model: Model) {
     do {
       try PropertyListEncoder().encode(model).write(to: fileURL)
     } catch {
@@ -32,7 +32,7 @@ extension PorpertyListCodable {
     }
   }
 
-  private var fileURL: URL {
+  private static var fileURL: URL {
     guard let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
       fatalError("Could not access document directory!")
     }
@@ -43,7 +43,7 @@ extension PorpertyListCodable {
     return fileURL
   }
 
-  private func createDocument(_ documentUrl: URL) {
+  private static func createDocument(_ documentUrl: URL) {
     do {
       guard let bundlePath = Bundle.main.path(forResource: fileName, ofType: "") else {
         fatalError("PList file \(fileName) not existed!")

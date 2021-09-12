@@ -8,7 +8,7 @@
 import Foundation
 
 struct CurrencyConverter {
-  let table: ExchangeRateTable
+  private let table: ExchangeRateTable
 
   init(_ table: ExchangeRateTable) {
     self.table = table
@@ -18,10 +18,10 @@ struct CurrencyConverter {
     _ amount: Double,
     from: Currency,
     to: Currency
-  ) -> Double {
+  ) -> Double? {
     let pair = CurrencyPair(source: from, target: to)
     guard let exchangeRate = table.get(for: pair) else {
-      fatalError("Don't support convert from \(from.code) to \(to.code)")
+      return nil
     }
     return amount * exchangeRate
   }
