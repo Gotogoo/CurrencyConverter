@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-ll-Kop">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="2h7-ll-Kop" userLabel="Pair Stack View">
                                 <rect key="frame" x="97" y="244" width="220" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hs0-Ub-HM8">
@@ -40,7 +40,7 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="Cxm-kq-fZm">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="Cxm-kq-fZm" userLabel="Amount Stack View">
                                 <rect key="frame" x="97" y="304" width="220" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-98-7BG">
@@ -65,21 +65,58 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vMW-WK-Kkq" userLabel="Rate Stack View">
+                                <rect key="frame" x="121.5" y="380" width="171" height="81"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exchange rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bta-3n-Sd7">
+                                        <rect key="frame" x="0.0" y="0.0" width="171" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00M-WB-WNj">
+                                        <rect key="frame" x="0.0" y="50" width="171" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Update Exchange Rate"/>
+                                        <connections>
+                                            <action selector="pressUpdateExchangeRate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ugM-uM-UQD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fnF-XH-uig">
+                                <rect key="frame" x="87" y="493" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="y9U-h4-DyY"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vMW-WK-Kkq" firstAttribute="top" secondItem="Cxm-kq-fZm" secondAttribute="bottom" constant="32" id="4JF-5t-Rd1"/>
                             <constraint firstItem="2h7-ll-Kop" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A5m-RS-gA6"/>
                             <constraint firstItem="Cxm-kq-fZm" firstAttribute="top" secondItem="2h7-ll-Kop" secondAttribute="bottom" constant="16" id="OV2-7T-PXT"/>
+                            <constraint firstItem="fnF-XH-uig" firstAttribute="top" secondItem="vMW-WK-Kkq" secondAttribute="bottom" constant="32" id="P4q-K4-LrX"/>
+                            <constraint firstItem="fnF-XH-uig" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="SUA-Wa-tSn"/>
+                            <constraint firstItem="vMW-WK-Kkq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cIt-4n-j18"/>
                             <constraint firstItem="Cxm-kq-fZm" firstAttribute="centerX" secondItem="2h7-ll-Kop" secondAttribute="centerX" id="mqW-mo-6ht"/>
+                            <constraint firstItem="fnF-XH-uig" firstAttribute="width" secondItem="2h7-ll-Kop" secondAttribute="width" multiplier="1.09091" id="w8z-5G-Ext"/>
                             <constraint firstItem="2h7-ll-Kop" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="y9o-gx-HB8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="exchangeRateTextField" destination="bta-3n-Sd7" id="BzT-yG-S9v"/>
+                        <outlet property="exchangeRatesTextView" destination="fnF-XH-uig" id="oxh-d5-PhD"/>
                         <outlet property="inputTextField" destination="cgw-98-7BG" id="44s-aO-Ucs"/>
                         <outlet property="outputTextField" destination="dHC-6o-y7e" id="wGt-h5-ImJ"/>
                         <outlet property="sourceTextField" destination="hs0-Ub-HM8" id="QUY-Z5-uxf"/>
                         <outlet property="targetTextField" destination="Mo2-Pf-dIq" id="GsN-Gg-qTt"/>
+                        <outlet property="updateExchangeRateButton" destination="00M-WB-WNj" id="gtO-ZF-CcJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -88,6 +125,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

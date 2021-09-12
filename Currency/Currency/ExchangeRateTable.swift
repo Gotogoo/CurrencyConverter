@@ -23,7 +23,8 @@ struct ExchangeRateTable {
   }
 
   init() {
-    self.table = ExchangeRateTable.loadPropertyList() ?? [:]
+    table = [:]
+    reload()
   }
 
   func get(for pair: CurrencyPair) -> Double? {
@@ -38,6 +39,24 @@ struct ExchangeRateTable {
   // set exchangeRates for a series of pairs
   mutating func set(with newTable: ExchangeRateModel) {
     table = table.merging(newTable) { (_, new) in new }
+    ExchangeRateTable.savePropertyList(model: table)
+    reload()
+  }
+
+  mutating func reload() {
+    table = ExchangeRateTable.loadPropertyList() ?? [:]
+  }
+
+  mutating func clear() {
+    ExchangeRateTable.savePropertyList(model: [:])
+    reload()
+  }
+
+  func ratesDescription() -> String {
+    zip(table.keys, table.values)
+      .map { key, value in "\(key): \(value)" }
+      .sorted()
+      .joined(separator: "\n")
   }
 }
 

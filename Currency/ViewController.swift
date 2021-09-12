@@ -13,6 +13,9 @@ class ViewController: UIViewController {
   @IBOutlet weak var targetTextField: UITextField!
   @IBOutlet weak var inputTextField: UITextField!
   @IBOutlet weak var outputTextField: UITextField!
+  @IBOutlet weak var exchangeRateTextField: UITextField!
+  @IBOutlet weak var updateExchangeRateButton: UIButton!
+  @IBOutlet weak var exchangeRatesTextView: UITextView!
 
   private let picker = UIPickerView()
   private let toolBar = UIToolbar()
@@ -22,10 +25,10 @@ class ViewController: UIViewController {
     [LegalCurrency.usd, LegalCurrency.rmb],
   ]
 
-  var converter: CurrencyConverter {
-    let exchangeRateTable = ExchangeRateTable()
-    let converter = CurrencyConverter(exchangeRateTable)
-    return converter
+  private var exchangeRateTable = ExchangeRateTable()
+
+  private var converter: CurrencyConverter {
+    CurrencyConverter(exchangeRateTable)
   }
 
   var pair: CurrencyPair? {
@@ -52,12 +55,16 @@ class ViewController: UIViewController {
 
     sourceTextField.inputView = picker
     targetTextField.inputView = picker
+
     sourceTextField.inputAccessoryView = toolBar
     targetTextField.inputAccessoryView = toolBar
 
     inputTextField.delegate = self
     inputTextField.keyboardType = .decimalPad
     outputTextField.isUserInteractionEnabled = false
+
+    exchangeRatesTextView.isEditable = false
+    setRatesDescription()
 
     toolBar.barStyle = UIBarStyle.default
     toolBar.isTranslucent = true
@@ -73,6 +80,30 @@ class ViewController: UIViewController {
       pickerView(picker, didSelectRow: picker.selectedRow(inComponent: component), inComponent: component)
     }
     inputTextField.becomeFirstResponder()
+  }
+
+
+  @IBAction func pressUpdateExchangeRate(_ sender: Any) {
+    guard let exchangeRateString = exchangeRateTextField.text,
+      let exchangeRate = Double(exchangeRateString),
+      let pair = pair else {
+      return
+    }
+    exchangeRateTable.set(exchangeRate: exchangeRate, for: pair)
+    setRatesDescription()
+  }
+
+  private func setRatesDescription() {
+    exchangeRatesTextView.text = exchangeRateTable.ratesDescription()
+  }
+
+  private func setExchangeRate() {
+    guard let pair = pair,
+      let rate = exchangeRateTable.get(for: pair) else {
+      exchangeRateTextField.text = nil
+      return
+    }
+    exchangeRateTextField.text = "\(rate)"
   }
 
   private func calculate() {
@@ -103,6 +134,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     let textField = component == 0 ? sourceTextField : targetTextField
     textField?.text = dataSource[component][row].code
+    setExchangeRate()
   }
 }
 
